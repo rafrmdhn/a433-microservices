@@ -13,8 +13,8 @@ ENV NODE_ENV=production DB_HOST=item-db
 # Menginstal dependencies untuk production dan kemudian build aplikasi.
 RUN npm install --production --unsafe-perm && npm run build
 
-# Saat container diluncurkan, jalankan server dengan perintah npm start.
-CMD ["npm", "start"]
-
 # Ekspos bahwa port yang digunakan oleh aplikasi adalah 8080.
 EXPOSE 8080
+
+# Saat container diluncurkan, jalankan server dengan perintah npm start.
+CMD ["npm", "start"]
