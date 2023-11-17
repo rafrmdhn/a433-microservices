@@ -1,0 +1,22 @@
+# menggunakan version 3.7
+version: "3.7"
+
+
+services:
+# mengatur service untuk container item-app
+  item-app:
+    image: ghcr.io/rafrmdhn/item-app:v1 
+    restart: always
+    ports:
+      - 80:8080
+
+# mengatur service untuk container item-db
+  item-db:
+    image: mongo:3
+    restart: always
+    volumes:
+      - app-db:/data/db
+         
+# mengatur bridge volume untuk item-db
+volumes:
+  app-db:
