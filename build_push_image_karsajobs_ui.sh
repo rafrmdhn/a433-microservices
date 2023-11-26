@@ -7,7 +7,7 @@ docker images ls
 # Menyematkan tag pada image untuk digunakan saat push ke GitHub Container Registry
 docker tag karsajobs-ui:latest ghcr.io/rafrmdhn/karsajobs-ui:latest
 
-export CR_PAT=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
+export CR_PAT=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
 
 # Melakukan login ke GitHub Container Registry menggunakan credentials yang disediakan
 echo $CR_PAT | docker login ghcr.io --username rafrmdhn --password-stdin
