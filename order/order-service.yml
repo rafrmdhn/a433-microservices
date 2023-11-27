@@ -1,0 +1,25 @@
+apiVersion: v1
+
+# tentukan jenis object = Service
+kind: Service
+
+# metadata
+metadata:
+  # nama = backend
+  name: order
+  #labels
+  labels:
+    app: e-commerce
+    tier: services
+
+# tentukan spesifikasi
+spec:
+  # tentukan port dari service
+  ports:
+  - name: default
+    port: 3000
+    protocol: TCP
+  # tentukan selector
+  selector:
+    app: e-commerce
+    tier: services

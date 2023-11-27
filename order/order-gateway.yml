@@ -1,0 +1,57 @@
+# gunakan api istio
+apiVersion: networking.istio.io/v1alpha3
+
+# type gateway
+kind: Gateway
+
+# tambahkan metadata
+metadata:
+  # nama = order gateway
+  name: order-gateway
+
+# spec
+spec:
+  # deklarasi selector
+  selector:
+    istio: ingressgateway # use istio default controller
+  # informasi server
+  servers:
+    # port yang akan digunakan 
+  - port:
+      # port 80
+      number: 80
+      # nama untuk port
+      name: http
+      # protokol port
+      protocol: HTTP
+    hosts:
+    - "*"
+---
+# gunakan api istio
+apiVersion: networking.istio.io/v1alpha3
+
+# jenis = virtual service
+kind: VirtualService
+
+# tambahkan metadata
+metadata:
+  # name order
+  name: order
+spec:
+  # tambahkan host
+  hosts:
+  - "*"
+  # pilih gateway sesuai dengan gateway yang telah dideklarasikan diatas
+  gateways:
+  - order-gateway
+  # tambahkan routing
+  http:
+  - match:
+    # route /order maka ke service order di port 3000
+    - uri:
+        exact: /order
+    route:
+    - destination:
+        host: order
+        port:
+          number: 3000

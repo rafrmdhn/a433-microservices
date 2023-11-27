@@ -1,0 +1,15 @@
+apiVersion: rabbitmq.com/v1beta1
+kind: RabbitmqCluster
+metadata:
+  name: rabbitmq
+spec:
+  replicas: 1
+  rabbitmq:
+          additionalConfig: |
+                  log.console.level = info
+                  channel_max = 700
+                  default_user= rafi
+                  default_pass= rafi1234
+                  default_user_tags.administrator = true
+  service:
+    type: LoadBalancer
