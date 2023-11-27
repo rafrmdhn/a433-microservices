@@ -4,10 +4,10 @@
 docker build -t karsajobs:latest .
 
 # Menampilkan daftar images Docker yang ada
-docker images ls
+docker images
 
 # Menyematkan tag pada image untuk digunakan saat push ke GitHub Container Registry
-docker tag karsajobs-ui:latest ghcr.io/rafrmdhn/karsajobs:latest
+docker tag karsajobs:latest ghcr.io/rafrmdhn/karsajobs:latest
 
 export CR_PAT=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
 
